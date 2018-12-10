@@ -24,14 +24,14 @@ describe 'Field' do
       field.add_ship Ship.new(0, 0)
 
       expect { field.add_ship(Ship.new(1, 1)) }
-        .to raise_error("You can't put ship near another one")
+        .to raise_error(RuntimeError, "You can't put ship near another one")
     end
 
     it 'should not raise error if you put ship on free water' do
       field.add_ship Ship.new(0, 0)
 
       expect { field.add_ship(Ship.new(1, 2)) }
-        .to_not raise_error("You can't put ship near another one")
+        .to_not raise_error(RuntimeError, "You can't put ship near another one")
     end
   end
 
@@ -40,31 +40,27 @@ describe 'Field' do
 
     it 'should properly fills [0,0]' do
       field.add_ship Ship.new(0, 0)
-      field.print_field
 
       expect(field.area)
-        .to eq [[1, 0, 9, 9], [0, 0, 9, 9], [9, 9, 9, 9], [9, 9, 9, 9]]
+        .to eq [[8, 0, 1, 1], [0, 0, 1, 1], [1, 1, 1, 1], [1, 1, 1, 1]]
     end
     it 'should properly fills [0,3]' do
       field.add_ship Ship.new(0, 3)
-      field.print_field
 
       expect(field.area)
-        .to eq [[9, 9, 0, 1], [9, 9, 0, 0], [9, 9, 9, 9], [9, 9, 9, 9]]
+        .to eq [[1, 1, 0, 8], [1, 1, 0, 0], [1, 1, 1, 1], [1, 1, 1, 1]]
     end
     it 'should properly fills [3,3]' do
       field.add_ship Ship.new(3, 3)
-      field.print_field
 
       expect(field.area)
-        .to eq [[9, 9, 9, 9], [9, 9, 9, 9], [9, 9, 0, 0], [9, 9, 0, 1]]
+        .to eq [[1, 1, 1, 1], [1, 1, 1, 1], [1, 1, 0, 0], [1, 1, 0, 8]]
     end
     it 'should properly fills [1,1]' do
       field.add_ship Ship.new(1, 1)
-      field.print_field
 
       expect(field.area)
-        .to eq [[0, 0, 0, 9], [0, 1, 0, 9], [0, 0, 0, 9], [9, 9, 9, 9]]
+        .to eq [[0, 0, 0, 1], [0, 8, 0, 1], [0, 0, 0, 1], [1, 1, 1, 1]]
     end
   end
 end

@@ -4,8 +4,8 @@ class Field
   attr_accessor :area, :size
 
   BORDER = 0
-  SHIP = 1
-  WATER = 9
+  SHIP = 8
+  WATER = 1
 
   def initialize(size)
     @area = (0...size).inject([]) do |arr|
