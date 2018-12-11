@@ -1,0 +1,24 @@
+#left {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 50%;
+}
+
+#right {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50%;
+}
+
+table{
+    width:80%;
+    height:80%;
+    margin:auto;
+    table-layout: fixed;
+}
+
+td img{
+    width:100%;
+}

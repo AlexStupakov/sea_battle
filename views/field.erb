@@ -1,0 +1,26 @@
+<% field.area.each do |row| %>
+  <table>
+    <tr>
+      <% row.each do |item| %>
+        <td>
+          <% case item %>
+          <% when Field::SHIP %>
+            <%= '<img src="../images/icons8-fishing-boat-100.png"/>' %>
+          <% when Field::BORDER %>
+            <%= '<img src="../images/128.png"/>' %>
+          <% when Field::WATER %>
+            <%= '<img src="../images/water-waves.png"/>' %>
+          <% when Field::BITTEN_SHIP %>
+            <%= '<img src="../images/bitten-fishing-boat-100.png"/>' %>
+          <% when Field::BITTEN_BORDER %>
+            <%= '<img src="../images/bitten_border.png"/>' %>
+          <% when Field::BITTEN_WATER %>
+            <%= '<img src="../images/bitten_water.png"/>' %>
+          <% else %>
+            <%= '<img src="../images/55621-fog-cloud-striped-weather-interface-symbol.svg"/>' %>
+          <% end %>
+        </td>
+      <% end %>
+    </tr>
+<% end %>
+  </table>

@@ -1,0 +1,18 @@
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>Sea buttle</title>
+
+  <link rel="stylesheet" type="text/css" href="../style.css" />
+
+</head>
+<body>
+<div id="left">
+  <p><%= partial :field, template_engine: :erb, locals: {field: ours_field} %></p>
+
+</div>
+
+<div id="right">
+  <p><%= partial :field, template_engine: :erb, locals: {field: theirs_field} %></p>
+
+</div>
+</body>

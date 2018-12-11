@@ -1,18 +1,35 @@
 # frozen_string_literal: true
 
 class Field
-  attr_accessor :area, :size
+  attr_accessor :covered
 
   BORDER = 0
   SHIP = 8
   WATER = 1
+  BITTEN_SHIP = 6
+  BITTEN_WATER = 7
+  BITTEN_BORDER = 9
+  COVERED = 5
 
-  def initialize(size)
+  def initialize(size, covered: false)
     @area = (0...size).inject([]) do |arr|
       arr << Array.new(size, WATER)
     end
     @size = size
     @ships_count = 0
+    @covered = covered
+  end
+
+  def area
+    if @covered
+      @area.map do |row|
+        row.map do |item|
+          COVERED unless [BITTEN_SHIP, BITTEN_WATER].include? item
+        end
+      end
+    else
+      @area
+    end
   end
 
   def add_ship(ship)
@@ -23,9 +40,6 @@ class Field
     update_position(ship.x_position, ship.y_position, SHIP)
     mark_borders ship.x_position, ship.y_position
     @ships_count += 1
-    p '_________________________________________________________'
-    p ['@ships_count', @ships_count]
-    print_field
   end
 
   def mark_borders(x_position, y_position)
