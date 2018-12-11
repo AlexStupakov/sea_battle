@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-gem 'rerun'
+gem 'byebug'
 gem 'rspec'
 gem 'rubocop'
 gem 'sinatra'

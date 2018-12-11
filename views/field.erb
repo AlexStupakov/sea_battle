@@ -1,26 +1,28 @@
-<% field.area.each do |row| %>
+<% field.area.each_with_index do |row, index_row| %>
   <table>
     <tr>
-      <% row.each do |item| %>
+      <% row.each_with_index do |item, index_item| %>
         <td>
-          <% case item %>
-          <% when Field::SHIP %>
+          <% if item == Field::SHIP %>
             <%= '<img src="../images/icons8-fishing-boat-100.png"/>' %>
-          <% when Field::BORDER %>
+          <% elsif item == Field::BORDER %>
             <%= '<img src="../images/128.png"/>' %>
-          <% when Field::WATER %>
+          <% elsif item == Field::WATER %>
             <%= '<img src="../images/water-waves.png"/>' %>
-          <% when Field::BITTEN_SHIP %>
+          <% elsif item == Field::BITTEN_SHIP %>
             <%= '<img src="../images/bitten-fishing-boat-100.png"/>' %>
-          <% when Field::BITTEN_BORDER %>
+          <% elsif item == Field::BITTEN_BORDER %>
             <%= '<img src="../images/bitten_border.png"/>' %>
-          <% when Field::BITTEN_WATER %>
+          <% elsif item == Field::BITTEN_WATER %>
             <%= '<img src="../images/bitten_water.png"/>' %>
           <% else %>
-            <%= '<img src="../images/55621-fog-cloud-striped-weather-interface-symbol.svg"/>' %>
+            <a href="/shot/<%= index_row%>/<%= index_item%>">
+
+              <%= '<img src="../images/55621-fog-cloud-striped-weather-interface-symbol.svg"/>' %>
+            </a>
           <% end %>
         </td>
       <% end %>
     </tr>
-<% end %>
   </table>
+<% end %>
