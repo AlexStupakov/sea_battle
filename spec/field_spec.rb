@@ -24,7 +24,7 @@ describe 'Field' do
       field.add_ship Ship.new(0, 0)
 
       expect { field.add_ship(Ship.new(1, 1)) }
-        .to raise_error(RuntimeError, "You can't put ship near another one FAIL")
+        .to raise_error(RuntimeError, "You can't put ship near another one")
     end
 
     it 'should not raise error if you put ship on free water' do
